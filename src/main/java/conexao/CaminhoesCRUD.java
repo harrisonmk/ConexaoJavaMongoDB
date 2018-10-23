@@ -51,10 +51,18 @@ public class CaminhoesCRUD {
         cami.add(caminhao);
     }
     
-    public void excluirCaminhao(Caminhoes caminhao){
-    
-    
-    
+    public void excluirCaminhao(){
+        System.out.print("Insira o ID do caminhao: ");
+        Long id = ler.nextLong();
+        
+        for(int i = 0; i < cami.size();i++){
+           Caminhoes cam = cami.get(i);
+            if(id == cam.getId()){
+                cami.remove(cam);
+                System.out.println("Caminhao removida com sucesso!!");
+                break;
+            }
+        }
     }
     
     
