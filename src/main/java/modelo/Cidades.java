@@ -1,5 +1,5 @@
 
-package conexao;
+package modelo;
 
 import java.util.ArrayList;
 

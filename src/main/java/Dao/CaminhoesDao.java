@@ -1,56 +1,22 @@
-package conexao;
+
+package Dao;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
+import modelo.Caminhoes;
 
-public class Main {
 
-    public static void main(String[] args) throws UnknownHostException {
-
-      /*  List<String> livros = Arrays.asList("The vampire diaries", "joao e maria");
-        DBObject person = new BasicDBObject("_id", "jo")
-                .append("name", "Harrison Mitchell")
-                .append("Endereco", new BasicDBObject("Rua", "Sao judas Tadeu")
-                        .append("cidade", "corumba")
-                        .append("Estado", "MS")
-                        .append("cep", 79310710))
-                .append("livros", livros);*/
-
-      List<Caminhoes> caminhoes = new ArrayList<>();
-      
-        MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
-        DB database = mongoClient.getDB("BD2"); // nome do banco
-        DBCollection collection = database.getCollection("caminhoneiro"); // nome do documento
-        //collection.insert(person); //insere a pessoa no banco
-
-        
-      Caminhoes caminhao = new Caminhoes();
-      
-      //toDBObject(caminhao);
-      
-      collection.insert(toDBObject(caminhao));
-      
-      
-      
-    }
-
-    public static final DBObject toDBObject(Caminhoes caminhao) {
+public class CaminhoesDao {
+    
+        public final DBObject insere(Caminhoes caminhao) {
         
         Scanner scan = new Scanner(System.in);
         
         System.out.println("Digite o id:");
         Long id = scan.nextLong();
         scan.nextLine();
-        System.out.println("Digite o nome do caminhao:");
+        System.out.println("Digite o nome do Motorista:");
         String nome = scan.nextLine();
         System.out.println("Digite a marca do caminhao:");
         String marca = scan.nextLine();
@@ -78,7 +44,7 @@ public class Main {
         
         
         return new BasicDBObject("Id", caminhao.getId())
-                .append("Caminhao", caminhao.getMotorista())
+                .append("Motorista", caminhao.getMotorista())
                 .append("Marca", caminhao.getMarca())
                 .append("Tamanho", caminhao.getTamanho())
                 .append("Local Atual", caminhao.getLocalAtual())
@@ -87,6 +53,5 @@ public class Main {
                 .append("km/litros", caminhao.getKmLitros());
 
     }
-    
     
 }

@@ -1,6 +1,6 @@
 
 
-package conexao;
+package modelo;
 
 
 public class Caminhoes {

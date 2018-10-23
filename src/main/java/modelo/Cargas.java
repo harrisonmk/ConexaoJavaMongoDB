@@ -1,5 +1,5 @@
 
-package conexao;
+package modelo;
 
 
 public class Cargas {
