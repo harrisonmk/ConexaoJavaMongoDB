@@ -1,4 +1,3 @@
-
 package Dao;
 
 import com.mongodb.BasicDBObject;
@@ -6,13 +5,16 @@ import com.mongodb.DBObject;
 import java.util.Scanner;
 import modelo.Caminhoes;
 
-
 public class CaminhoesDao {
+
     
-        public final DBObject insere(Caminhoes caminhao) {
-        
+    
+    // metodos
+    
+    public final DBObject insere(Caminhoes caminhao) {
+
         Scanner scan = new Scanner(System.in);
-        
+
         System.out.println("Digite o id:");
         Long id = scan.nextLong();
         scan.nextLine();
@@ -31,7 +33,7 @@ public class CaminhoesDao {
         double salario = scan.nextDouble();
         System.out.println("Digite o km/litros");
         double km = scan.nextDouble();
-        
+
         caminhao = new Caminhoes();
         caminhao.setId(id);
         caminhao.setMotorista(nome);
@@ -41,8 +43,7 @@ public class CaminhoesDao {
         caminhao.setListaDestino(lista);
         caminhao.setSalario(salario);
         caminhao.setKmLitros(km);
-        
-        
+
         return new BasicDBObject("Id", caminhao.getId())
                 .append("Motorista", caminhao.getMotorista())
                 .append("Marca", caminhao.getMarca())
@@ -53,5 +54,5 @@ public class CaminhoesDao {
                 .append("km/litros", caminhao.getKmLitros());
 
     }
-    
+
 }
